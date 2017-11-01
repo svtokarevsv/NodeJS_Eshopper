@@ -1,4 +1,6 @@
 const express = require('express');
+const path = require('path');
+
 const app = express();
 app.set('port', (process.env.PORT || 5000));
 app
@@ -7,7 +9,7 @@ app
 		next();
 	})
 	.get('/checkout', function (req, res) {
-		res.sendFile('checkout.html');
+		res.sendFile(path.join(__dirname,'checkout.html'));
 	})
 	.use(express.static(__dirname))
 	.listen(app.get('port'), function () {
